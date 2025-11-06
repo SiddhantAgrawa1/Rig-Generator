@@ -1,38 +1,342 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f9f6 0%, #e8f7f3 100%);
   min-height: 100vh;
+}
+
+/* Navbar Styles - Worldline Colors */
+.navbar {
+  background: linear-gradient(135deg, #00a651 0%, #009c47 100%);
+  box-shadow: 0 4px 12px rgba(0, 166, 81, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #00c853;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.navbar-text {
   color: white;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-brand:hover {
+  transform: scale(1.05);
 }
 
-@keyframes App-logo-spin {
+.navbar-brand:hover .navbar-logo {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px);
+  padding: 20px;
+}
+
+.form-container {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 166, 81, 0.12);
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  animation: slideIn 0.5s ease;
+  border-top: 4px solid #00a651;
+}
+
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e8f5e9;
+  padding-bottom: 20px;
+}
+
+.form-header h1 {
+  color: #004d29;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  color: #00a651;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: alertSlideIn 0.3s ease;
+  border-left: 4px solid;
+}
+
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  border-color: #00a651;
+  color: #004d29;
+}
+
+.alert-danger {
+  background-color: #ffebee;
+  border-color: #e53935;
+  color: #c62828;
+}
+
+.alert-warning {
+  background-color: #fff3e0;
+  border-color: #f57c00;
+  color: #e65100;
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  margin-left: 10px;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.alert-close:hover {
+  opacity: 0.6;
+  transform: scale(1.2);
+}
+
+.configuration-form {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #004d29;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e0f2f1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #f0f9f6;
+  color: #004d29;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #00a651;
+  box-shadow: 0 0 0 4px rgba(0, 166, 81, 0.1);
+  background-color: white;
+}
+
+.form-control:hover {
+  border-color: #00c853;
+}
+
+.form-control option {
+  background-color: white;
+  color: #004d29;
+}
+
+.form-control::placeholder {
+  color: #80cbc4;
+}
+
+.error-text {
+  display: block;
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.help-text {
+  display: block;
+  color: #00a651;
+  font-size: 12px;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.btn-download {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #00a651 0%, #009c47 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 166, 81, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-download:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 166, 81, 0.5);
+  background: linear-gradient(135deg, #009c47 0%, #008940 100%);
+}
+
+.btn-download:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-download:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  box-shadow: 0 4px 15px rgba(0, 166, 81, 0.2);
+}
+
+.btn-download.loading {
+  opacity: 0.9;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f9f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00a651;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #009c47;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .navbar-container {
+    padding: 10px 15px;
+  }
+
+  .navbar-text {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .navbar-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .form-container {
+    padding: 25px;
+    border-radius: 12px;
+  }
+
+  .form-header h1 {
+    font-size: 22px;
+  }
+
+  .form-control {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .btn-download {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .app-container {
+    min-height: calc(100vh - 65px);
+  }
+}
+
+@media (max-width: 400px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  .form-header h1 {
+    font-size: 20px;
+  }
+
+  .navbar-text {
+    font-size: 18px;
   }
 }
